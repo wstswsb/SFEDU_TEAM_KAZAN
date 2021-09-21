@@ -8,6 +8,7 @@ class UsersTranslator(Translator):
         user.fullname = mongo_user.get("fullname")
         user.telegram_id = mongo_user.get("telegram_id")
         user.mongo_id = mongo_user.get("_id")
+        return user
 
     def to_document(self, user: User) -> dict:
         return {
