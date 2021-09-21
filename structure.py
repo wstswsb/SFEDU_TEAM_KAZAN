@@ -14,6 +14,16 @@ from services import (
     CheckService,
 )
 from presenters import UsersPresenter
+from utils import (
+    CheckChecker,
+    ImgToText,
+)
+
+
+# === UTILS === #
+check_checker = CheckChecker()
+img_to_text = ImgToText()
+
 
 logger = loggers_factory.get()
 

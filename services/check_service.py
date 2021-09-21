@@ -9,8 +9,10 @@ from models import Check
 
 
 class CheckService:
-    def __init__(self, repository) -> None:
+    def __init__(self, repository, **utils) -> None:
         self.repository: CheckRepository = repository
+        self.img_to_text = utils.get("img_to_text")
+        self.check_checker = utils.get("check_checker")
 
     def upload(self, args: dict) -> Check:
         # args  = request.files + upload_folder + telegram_id
@@ -25,6 +27,6 @@ class CheckService:
         filename = secure_filename(file.filename)
         path_to_image = os.path.join(args["UPLOAD_FOLDER"], filename)
         file.save(path_to_image)
-        check = Check.from_request(args | {"path_to_image": path_to_image})
-        check.id = self.repository.create(check)
-        return check
+
+        # Todo: Вызвать утилиту для получения информации из картинки
+        #  Заполнить инфой модель
