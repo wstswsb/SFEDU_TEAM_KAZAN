@@ -9,6 +9,9 @@ class CheckPresenter:
             "text": check.text,
             "info": {
                 "balance": check.balance,
-                "INN": check.INN
+                "int_balance": check.int_balance,
+                "INN": check.INN,
+                "man_date": check.man_date,
+                "man_time": check.man_time,
             }
         }

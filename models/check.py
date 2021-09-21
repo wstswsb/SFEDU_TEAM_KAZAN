@@ -1,4 +1,4 @@
-from os import stat
+from datetime import datetime
 from .model import Model
 
 
@@ -10,10 +10,15 @@ class Check(Model):
         self.INN: str = None
         self.balance: str = None
         self.text: str = None
+        self.date_of_creation: str = None
+
+        self.man_date: str = None
+        self.man_time: str = None
+        self.int_balance: int = 0
 
     def _cut_balance(self, keywords=None) -> None:
         if keywords is None:
-            keywords = ["ИТОГО", "СУММА"]
+            keywords = ["ИТОГО", "СУММА", "ИТОГ"]
         for word in keywords:
             index = self.text.find(word)
             if index != -1:
@@ -35,6 +40,7 @@ class Check(Model):
         self._cut_balance()
         self.text = [line for line in args.get("text").strip().split("\n")
                      if line != ""]
+        self.date_of_creation = datetime.now().isoformat()
 
     def __str__(self) -> str:
         return \
@@ -44,4 +50,7 @@ class Check(Model):
             f"{self.path_to_img = }" \
             f"{self.INN = }" \
             f"{self.balance = }" \
+            f"{self.man_date = }" \
+            f"{self.man_time = }" \
+            f"{self.int_balance = }" \
             f"{self.text = }"

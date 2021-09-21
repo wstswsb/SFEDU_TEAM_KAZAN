@@ -2,7 +2,7 @@
 
 class CheckChecker:
     def __init__(self, check_keywords=None) -> None:
-        self.check_keywords = ["ИТОГО", "СУММА"]
+        self.check_keywords = ["ИТОГО", "СУММА", "ИТОГ"]
         if check_keywords is not None:
             self.check_keywords: list = check_keywords
 

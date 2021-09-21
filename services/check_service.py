@@ -2,7 +2,10 @@ import os
 import json
 from werkzeug.utils import secure_filename
 
-from exceptions.bad_request import BadRequest
+from exceptions import (
+    BadRequest,
+    NotFound
+)
 from bson.objectid import ObjectId
 
 from repositories import CheckRepository
@@ -21,6 +24,24 @@ class CheckService:
         self.img_to_text: ImgToText = utils.get("img_to_text")
         self.check_checker: CheckChecker = utils.get("check_checker")
         self.logger = loggers_factory.get()
+
+    def patch_date_time_intbalance(self, args: dict) -> Check:
+        check = self.get_by_telegram_img_id(args)
+        check.man_date = args.get("man_date")
+        check.man_time = args.get("man_time")
+        check.int_balance = args.get("int_balance")
+        check = self.repository.update_by_telegram_img_id(check)
+        return check
+
+    def get_by_telegram_img_id(self, args: dict) -> Check:
+        check = self.repository \
+            .get_by_telegram_img_id(args.get("telegram_img_id"))
+        if check is None:
+            raise NotFound()
+        return check
+
+    def history(self, args: dict) -> list[Check]:
+        return self.repository.get_history(args.get("telegram_owner_id"))
 
     def upload(self, args: dict) -> Check:
         # args  = request.files + upload_folder + telegram_id

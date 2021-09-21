@@ -10,7 +10,11 @@ class CheckTranslator(Translator):
             "path_to_img": model.path_to_img,
             "INN": model.INN,
             "balance": model.balance,
-            "text": model.text
+            "text": model.text,
+            "date_of_creation": model.date_of_creation,
+            "int_balance": model.int_balance,
+            "man_date": model.man_date,
+            "man_time": model.man_time
         }
 
     def from_document(self, data: dict) -> Check:
@@ -21,4 +25,8 @@ class CheckTranslator(Translator):
         model.INN = data.get("INN")
         model.balance = data.get("balance")
         model.text = data.get("text")
+        model.date_of_creation = data.get("date_of_creation")
+        model.int_balance = data.get("int_balance")
+        model.man_time = data.get("man_time")
+        model.man_date = data.get("man_date")
         return model

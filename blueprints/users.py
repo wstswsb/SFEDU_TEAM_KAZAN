@@ -41,5 +41,3 @@ def get(telegram_id: str):
     except NotFound as err:
         return '', err.code
     return users_presenter.to_json(user), 200
-
-
