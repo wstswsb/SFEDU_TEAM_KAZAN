@@ -1,14 +1,27 @@
 from pymongo import MongoClient
 from dotenv import dotenv_values
 from loggers_factory import loggers_factory
-from translators import UsersTranslator
-from repositories import UsersRepository
-from services import UsersService
+from translators import (
+    UsersTranslator,
+    CheckTranslator,
+)
+from repositories import (
+    UsersRepository,
+    CheckRepository
+)
+from services import (
+    UsersService,
+    CheckService,
+)
 from presenters import UsersPresenter
 
 logger = loggers_factory.get()
 
 config = dotenv_values(".env")
+
+# === Constatns === #
+UPLOAD_FOLDER = config["FLASK_UPLOAD_FOLDER"]
+
 
 # === Mongo === #
 logger.info("Trying connect to mongo")
@@ -20,14 +33,19 @@ logger.info("Connection to mongo has been created")
 
 # === Translators === #
 users_translator = UsersTranslator()
+check_translator = CheckTranslator()
 
 
 # === Repositories === #
 users_repository = UsersRepository(translator=users_translator,
                                    collection=mongo_client.KAZAN.users)
-
+check_repository = CheckRepository(translator=check_translator,
+                                   collection=mongo_client.KAZAN.checks)
 # === Presenters === #
 users_presenter = UsersPresenter()
 
 # === Services === #
-users_service = UsersService(repository=users_repository)
+check_sercvice = CheckService(repository=check_repository)
+users_service = UsersService(
+    repository=users_repository,
+    check_service=check_sercvice)

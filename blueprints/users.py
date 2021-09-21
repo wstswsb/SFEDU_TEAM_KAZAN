@@ -1,12 +1,14 @@
-from services.users_service import UsersService
-import exceptions
+import os
+
 from flask import (
     Blueprint,
     request
 )
+from werkzeug.utils import redirect, secure_filename
 from structure import (
+    UPLOAD_FOLDER,
     users_presenter,
-    users_service
+    users_service,
 )
 from loggers_factory import loggers_factory
 from exceptions import (
@@ -40,3 +42,17 @@ def get(telegram_id: str):
     except NotFound as err:
         return '', err.code
     return users_presenter.to_json(user), 200
+
+
+# Checks work
+
+@users.route("/<telegram_id>/<img_id>", methods=["POST"])
+def upload_img(telegram_id: str, img_id: str):
+    fields = request.files | {
+        "UPLOAD_FOLDER": UPLOAD_FOLDER,
+        "telegram_id": telegram_id}
+    try:
+        pass
+    except:
+        pass
+    return '', 201

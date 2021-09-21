@@ -1,13 +1,18 @@
-from exceptions.not_found import NotFound
-from pymongo.common import raise_config_error
-from exceptions.conflict import Conflict
+from models.check import Check
+from bson.objectid import ObjectId
+from .check_service import CheckService
+from exceptions import (
+    NotFound,
+    Conflict
+)
 from repositories import UsersRepository
 from models import User
 
 
 class UsersService:
-    def __init__(self, repository: UsersRepository) -> None:
-        self.repository = repository
+    def __init__(self, repository: UsersRepository, check_service) -> None:
+        self.repository: UsersRepository = repository
+        self.check_service: CheckService = check_service
 
     def create(self, args: dict) -> User:
         user = User.from_request(
@@ -26,3 +31,7 @@ class UsersService:
         if user is None:
             raise NotFound()
         return user
+
+    def upload_user_check(self, args: dict) -> Check:
+        check = self.check_service.upload(args)
+        return check
