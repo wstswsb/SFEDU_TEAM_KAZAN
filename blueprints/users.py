@@ -1,4 +1,3 @@
-import os
 
 from flask import (
     Blueprint,
@@ -44,15 +43,3 @@ def get(telegram_id: str):
     return users_presenter.to_json(user), 200
 
 
-# Checks work
-
-@users.route("/<telegram_id>/<img_id>", methods=["POST"])
-def upload_img(telegram_id: str, img_id: str):
-    fields = request.files | {
-        "UPLOAD_FOLDER": UPLOAD_FOLDER,
-        "telegram_id": telegram_id}
-    try:
-        pass
-    except:
-        pass
-    return '', 201

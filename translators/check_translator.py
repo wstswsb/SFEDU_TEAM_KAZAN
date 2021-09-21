@@ -10,6 +10,7 @@ class CheckTranslator(Translator):
             "path_to_img": model.path_to_img,
             "INN": model.INN,
             "balance": model.balance,
+            "text": model.text
         }
 
     def from_document(self, data: dict) -> Check:

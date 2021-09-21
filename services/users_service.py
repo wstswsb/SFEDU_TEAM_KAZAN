@@ -10,9 +10,8 @@ from models import User
 
 
 class UsersService:
-    def __init__(self, repository: UsersRepository, check_service) -> None:
+    def __init__(self, repository: UsersRepository) -> None:
         self.repository: UsersRepository = repository
-        self.check_service: CheckService = check_service
 
     def create(self, args: dict) -> User:
         user = User.from_request(

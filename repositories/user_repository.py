@@ -1,11 +1,6 @@
 from bson import ObjectId
 from .mongo_repository import MongoRepository
 from models import User
-from exceptions import (
-    BadRequest,
-    NotFound,
-    Conflict
-)
 
 
 class UsersRepository(MongoRepository):

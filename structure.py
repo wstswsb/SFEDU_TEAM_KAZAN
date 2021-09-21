@@ -13,7 +13,10 @@ from services import (
     UsersService,
     CheckService,
 )
-from presenters import UsersPresenter
+from presenters import (
+    UsersPresenter,
+    CheckPresenter
+)
 from utils import (
     CheckChecker,
     ImgToText,
@@ -53,9 +56,11 @@ check_repository = CheckRepository(translator=check_translator,
                                    collection=mongo_client.KAZAN.checks)
 # === Presenters === #
 users_presenter = UsersPresenter()
+check_presenter = CheckPresenter()
 
 # === Services === #
-check_sercvice = CheckService(repository=check_repository)
+check_sercvice = CheckService(repository=check_repository,
+                              img_to_text=img_to_text,
+                              check_checker=check_checker)
 users_service = UsersService(
-    repository=users_repository,
-    check_service=check_sercvice)
+    repository=users_repository)
