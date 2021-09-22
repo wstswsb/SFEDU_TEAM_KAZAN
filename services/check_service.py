@@ -60,6 +60,10 @@ class CheckService:
         self.logger.debug(args)
         if not self.check_checker.is_check(args["text"]):
             self.logger.debug("no keywords in text")
+            check = Check()
+            check.assign_request(args)
+            self.logger.debug(check)
+            self.repository.create(check)
             raise BadRequest()
 
         check = Check()
