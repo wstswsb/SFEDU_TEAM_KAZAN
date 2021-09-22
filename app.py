@@ -11,4 +11,4 @@ app.register_blueprint(users, url_prefix="/users")
 app.register_blueprint(checks, url_prefix="/checks")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=6969)
+    app.run(host="0.0.0.0", port=6968)

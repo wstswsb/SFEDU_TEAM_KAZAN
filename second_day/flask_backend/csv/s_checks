@@ -1,0 +1,82 @@
+[{
+  "_id": {
+    "$oid": "614b1d74267ff86b79a3e726"
+  },
+  "owner_id": {
+    "$oid": "614b1cff267ff86b79a3e724"
+  },
+  "sum": 500,
+  "timestamp": 1632312779
+},{
+  "_id": {
+    "$oid": "614b1e16fc52fc8bfc9006d7"
+  },
+  "owner_id": {
+    "$oid": "614b1cff267ff86b79a3e724"
+  },
+  "sum": 400,
+  "timestamp": 1632226539
+},{
+  "_id": {
+    "$oid": "614b1e1afc52fc8bfc9006d8"
+  },
+  "owner_id": {
+    "$oid": "614b1cff267ff86b79a3e724"
+  },
+  "sum": 600,
+  "timestamp": 1632140139
+},{
+  "_id": {
+    "$oid": "614b1e96fc52fc8bfc9006d9"
+  },
+  "owner_id": {
+    "$oid": "614b1d28fc52fc8bfc9006d5"
+  },
+  "sum": 700,
+  "timestamp": 1632312779
+},{
+  "_id": {
+    "$oid": "614b1e98fc52fc8bfc9006da"
+  },
+  "owner_id": {
+    "$oid": "614b1d28fc52fc8bfc9006d5"
+  },
+  "sum": 398,
+  "timestamp": 1632226539
+},{
+  "_id": {
+    "$oid": "614b1e9bfc52fc8bfc9006db"
+  },
+  "owner_id": {
+    "$oid": "614b1d28fc52fc8bfc9006d5"
+  },
+  "sum": 458,
+  "timestamp": 1632140139
+},{
+  "_id": {
+    "$oid": "614b1ed4fc52fc8bfc9006dc"
+  },
+  "owner_id": {
+    "$oid": "614b1d2bfc52fc8bfc9006d6"
+  },
+  "sum": 458,
+  "timestamp": 1632312779
+},{
+  "_id": {
+    "$oid": "614b1f35fc52fc8bfc9006dd"
+  },
+  "owner_id": {
+    "$oid": "614b1d2bfc52fc8bfc9006d6"
+  },
+  "sum": 666,
+  "timestamp": 1632226539
+},{
+  "_id": {
+    "$oid": "614b1f38fc52fc8bfc9006de"
+  },
+  "owner_id": {
+    "$oid": "614b1d2bfc52fc8bfc9006d6"
+  },
+  "sum": 775,
+  "timestamp": 1632140139
+}]
