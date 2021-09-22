@@ -15,7 +15,9 @@ from repositories import (
     MongoRepository,
     CheckRepository
 )
-
+from services import (
+    UserService
+)
 config = dotenv_values('.env')
 
 # === Mongo === #
@@ -41,4 +43,10 @@ user_repository = UserRepository(
 check_repository = CheckRepository(
     translator=check_translator,
     collection=mongo_client.KAZAN.s_checks
+)
+
+
+# == Services == #
+user_service = UserService(
+    repository=user_repository
 )
